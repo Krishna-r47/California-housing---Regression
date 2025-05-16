@@ -6,22 +6,20 @@ learning model (AdaBoost Regressor with decision trees as base estimators), eval
 performance on the California Housing dataset.
 
 ## B) EDA and Data Pre-processing Steps Taken
-→ The digits dataset from sklearn.datasets was loaded, containing 8x8 pixel images of handwritten digits (0–9).
-The dataset had no missing values, so we directly moved into exploring and preparing the data.
+→ The fetch_california_housing dataset from sklearn.datasets was loaded as a DataFrame. It includes features 
+such as average income, population, and house age, with the target being median house value.
 
-→ Basic structure and statistics were reviewed using .info() and .describe(), followed by visual checks of class
-distribution to ensure a balanced dataset. Sample digit images were plotted to confirm label integrity and get a
-sense of pixel-level patterns.
+→ Dataset structure was reviewed using .info() and .describe() to check feature types and distributions. 
+A check for missing values confirmed a clean dataset.
 
-→ To understand feature relationships, a correlation heatmap was created using seaborn, and pixel intensity
-patterns were visualized through histograms and boxplots. A pairplot was also used on the first few features to
-observe how well they separate across classes.
+→ Visual EDA was conducted through correlation heatmaps, histograms, and boxplots to identify relationships, outliers, 
+and skewed distributions. Scatter plots were also plotted to observe how each feature individually correlates with the target.
 
-→ The dataset was split into training and test sets (80-20) using stratified sampling to preserve class proportions.
+→ Outliers were removed using the IQR method for all features. Highly skewed features (absolute skew > 0.75) 
+were log-transformed using np.log1p() to reduce their influence and normalize distributions.
 
-→ For SVM, pixel features were standardized using StandardScaler since SVMs are sensitive to scale. For CNN,
-image data was normalized (divided by 16.0) and reshaped to (8, 8, 1) to match the expected input shape for
-convolutional layers.
+→ The dataset was split into training and test sets using an 80-20 split. A StandardScaler was applied to scale the features
+since linear models and ensemble methods often benefit from normalized data.
 
 ## C) Model Training and Evaluation
 → A simple Linear Regression model was trained on the scaled features. Its predictions were evaluated using
