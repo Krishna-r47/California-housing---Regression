@@ -7,7 +7,7 @@ performance on the California Housing dataset.
 
 ## B) EDA and Data Pre-processing Steps Taken
 → The fetch_california_housing dataset from sklearn.datasets was loaded as a DataFrame. It includes features 
-such as average population, and house age, with the target being median house value.
+such as average population and house age, with the target being median house value.
 
 → Dataset structure was reviewed using .info() and .describe() to check feature types and distributions. 
 A check for missing values confirmed a clean dataset.
